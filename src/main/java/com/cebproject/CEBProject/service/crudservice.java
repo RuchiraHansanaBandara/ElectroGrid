@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.cebproject.CEBProject.model.crudmodel;
 
@@ -45,5 +48,79 @@ public class crudservice {
 		}
 		
 		return branch;
+	}
+	
+	public ArrayList<crudmodel> getbranch() throws SQLException{
+		
+		ArrayList<crudmodel> data = new ArrayList<crudmodel>();
+		
+		String select = "select * from branch";
+		PreparedStatement ps = con.prepareStatement(select);
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			crudmodel model = new crudmodel();
+			
+			model.setBranchName(rs.getString("branchName"));
+			model.setLocation(rs.getString("location"));
+			
+			data.add(model);
+		}
+		
+		return data;
+	}
+	
+	public ArrayList<crudmodel> getbranchById(int id) throws SQLException{
+		
+		ArrayList<crudmodel> data = new ArrayList<crudmodel>();
+		
+		String select = "select * from branch where id =?";
+		PreparedStatement ps = con.prepareStatement(select);
+		ps.setInt(1, id);
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			crudmodel model = new crudmodel();
+			
+			model.setBranchName(rs.getString("branchName"));
+			model.setLocation(rs.getString("location"));
+			
+			data.add(model);
+		}
+		
+		return data;
+	}
+	
+	public crudmodel updateBranch(crudmodel branch) {
+		String insert = "update branch set branchName= ? , location= ? where id =? ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(insert);
+			ps.setString(1, branch.getBranchName());
+			ps.setString(2, branch.getLocation());
+			ps.setInt(3, branch.getId());
+			
+			
+			ps.executeUpdate();
+		}catch(Exception e) {
+			System.out.println(e +" data insert unsuccess");
+		}
+		
+		return branch;
+	}
+	
+	public int deleteBranch(int id) {
+		String insert = "delete from branch where id =? ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(insert);
+			ps.setInt(1, id);
+			
+			ps.executeUpdate();
+		}catch(Exception e) {
+			System.out.println(e +" data insert unsuccess");
+		}
+		
+		return id;
 	}
 }
