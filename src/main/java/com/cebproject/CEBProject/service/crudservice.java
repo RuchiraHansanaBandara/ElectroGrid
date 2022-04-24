@@ -108,4 +108,19 @@ public class crudservice {
 		
 		return branch;
 	}
+	
+	public int deleteBranch(int id) {
+		String insert = "delete from branch where id =? ";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(insert);
+			ps.setInt(1, id);
+			
+			ps.executeUpdate();
+		}catch(Exception e) {
+			System.out.println(e +" data insert unsuccess");
+		}
+		
+		return id;
+	}
 }

@@ -49,4 +49,12 @@ public class crudresource {
 	public crudmodel updateBranch(crudmodel branch) {
 		return service.updateBranch(branch);
 	}
+	
+
+	@Path("/deletebranchById/{id}")
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	public int deleteBranch(@PathParam("id") int id) {
+		return service.deleteBranch(id);
+	}
 }
