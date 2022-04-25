@@ -35,12 +35,12 @@ public class crudservice {
 	
 	public crudmodel insertBranch(crudmodel branch) {
 		String insert = "insert into branch(branchName,location,branchCode) values(?,?,?) ";
-		
+		System.out.println(branch.getbranchCode());
 		try {
 			PreparedStatement ps = con.prepareStatement(insert);
 			ps.setString(1, branch.getBranchName());
 			ps.setString(2, branch.getLocation());
-			ps.setString(3, branch.getBranchCode());
+			ps.setString(3, branch.getbranchCode());
 			
 			
 			ps.execute();
@@ -61,10 +61,10 @@ public class crudservice {
 		
 		while(rs.next()) {
 			crudmodel model = new crudmodel();
-			
+			model.setId(rs.getInt("id"));
 			model.setBranchName(rs.getString("branchName"));
 			model.setLocation(rs.getString("location"));
-			model.setBranchCode(rs.getString("branchCode"));
+			model.setbranchCode(rs.getString("branchCode"));
 			
 			data.add(model);
 		}
@@ -83,10 +83,10 @@ public class crudservice {
 		
 		while(rs.next()) {
 			crudmodel model = new crudmodel();
-			
+			model.setId(rs.getInt("id"));
 			model.setBranchName(rs.getString("branchName"));
 			model.setLocation(rs.getString("location"));
-			model.setBranchCode(rs.getString("branchCode"));
+			model.setbranchCode(rs.getString("branchCode"));
 			
 			
 			data.add(model);
@@ -96,13 +96,13 @@ public class crudservice {
 	}
 	
 	public crudmodel updateBranch(crudmodel branch) {
-		String insert = "update branch set branchName= ? , location= ? , branchCode =?, where id =? ";
+		String insert = "update branch set branchName= ? , location= ? , branchCode= ?  where id =? ";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(insert);
 			ps.setString(1, branch.getBranchName());
 			ps.setString(2, branch.getLocation());
-			ps.setString(3, branch.getBranchCode());
+			ps.setString(3, branch.getbranchCode());
 			ps.setInt(4, branch.getId());
 			
 			

@@ -23,6 +23,8 @@ public class crudresource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public crudmodel addBranch(crudmodel branch) {
+		System.out.println("INSINDE THE /INSERTION");
+		System.out.println(branch.getBranchName());
 		return service.insertBranch(branch);
 	}
 	
