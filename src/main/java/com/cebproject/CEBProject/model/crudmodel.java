@@ -7,7 +7,7 @@ public class crudmodel {
 	private String location;
 	
 	
-	
+	// add new
 	
 	public crudmodel() {
 		
