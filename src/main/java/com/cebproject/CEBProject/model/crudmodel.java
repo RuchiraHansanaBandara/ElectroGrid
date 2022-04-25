@@ -5,6 +5,7 @@ public class crudmodel {
 	private int id;
 	private String branchName;
 	private String location;
+	private String branchCode;
 	
 	
 	// add new
@@ -16,11 +17,26 @@ public class crudmodel {
 
 
 
-	public crudmodel(int id, String branchName, String location) {
+	public crudmodel(int id, String branchName, String location, String branchCode) {
 		super();
 		this.id = id;
 		this.branchName = branchName;
 		this.location = location;
+		this.branchCode = branchCode;
+	}
+
+
+
+
+	public String getBranchCode() {
+		return branchCode;
+	}
+
+
+
+
+	public void setBranchCode(String branchCode) {
+		this.branchCode = branchCode;
 	}
 
 
