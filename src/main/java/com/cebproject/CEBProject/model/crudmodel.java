@@ -28,18 +28,6 @@ public class crudmodel {
 
 
 
-	public String getBranchCode() {
-		return branchCode;
-	}
-
-
-
-
-	public void setBranchCode(String branchCode) {
-		this.branchCode = branchCode;
-	}
-
-
 
 
 	public int getId() {
@@ -75,12 +63,18 @@ public class crudmodel {
 	}
 
 
-
-
 	public void setLocation(String location) {
 		this.location = location;
 	}
 		
+
+	public String getbranchCode() {
+		return branchCode;
+	}
+
+	public void setbranchCode(String branchCode) {
+		this.branchCode = branchCode;
+	}
 	
 	
 }
